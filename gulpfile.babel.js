@@ -185,6 +185,6 @@ gulp.task('deploy', function () {
   return gulp.src("./dist/**/*")
     .pipe(deploy({ 
       remoteUrl: "https://github.com/admarble/admarble.github.io.git",
-      branch: "ghPages"
+      branch: "master"
     }))
 });
