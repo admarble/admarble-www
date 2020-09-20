@@ -15,6 +15,8 @@ import named         from 'vinyl-named';
 import uncss         from 'uncss';
 import autoprefixer  from 'autoprefixer';
 
+const deploy = require('gulp-gh-pages');
+
 // Load all Gulp plugins into one variable
 const $ = plugins();
 
@@ -31,7 +33,7 @@ function loadConfig() {
 
 // Add the .htaccess file to the dist directory
 function htac() {
-  return gulp.src('./src/.htaccess', { dot: true })
+  return gulp.src(['./src/.htaccess', './src/.nojekyll'],  { dot: true }, {base: './src/'})
     .pipe(gulp.dest(PATHS.dist));
 }
 
@@ -178,3 +180,11 @@ function watch() {
   gulp.watch('src/assets/img/**/*').on('all', gulp.series(images, browser.reload));
   gulp.watch('src/styleguide/**').on('all', gulp.series(styleGuide, browser.reload));
 }
+
+gulp.task('deploy', function () {
+  return gulp.src("./dist/**/*")
+    .pipe(deploy({ 
+      remoteUrl: "https://github.com/admarble/admarble.github.io.git",
+      branch: "ghPages"
+    }))
+});
