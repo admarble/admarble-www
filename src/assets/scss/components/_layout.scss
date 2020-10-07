@@ -5,7 +5,7 @@
 @import 'motion-ui';
 @import 'util/util';
 @import 'util/mixins';
-@import 'ticker';   
+@import 'ticker';
 
 html {
     height: 100%;
@@ -95,10 +95,10 @@ picture {
     }
 }
 .project-preview-caption {
-    font-weight: 900;
+    font-weight: 500;
 }
 .project-preview-client {
-    font-weight: 500;
+    font-weight: 400;
 }
 .caption {
     color: $black;
@@ -134,7 +134,7 @@ picture {
     display: inline-block;
     margin-right: 7px;
     margin-bottom: -1px;
-    font-weight: 550;
+    font-weight: 500;
     // display: none;
     @include breakpoint(small only) { 
         margin-bottom: -1px;
@@ -173,6 +173,7 @@ picture {
     }
     overflow: hidden;
 }
+/* uncss:ignore start */
 button.flickity-button.flickity-prev-next-button {
     background: transparent;
     width: 40%;
@@ -183,9 +184,11 @@ button.flickity-button.flickity-prev-next-button {
     height: 100%;
     cursor: pointer;
 }
+
 .flickity-button-icon {
     display: none;
 }
+
 button.flickity-button.flickity-prev-next-button.next {
     right: 0;
     cursor: url(../img/arrow-forward.svg),auto;
@@ -193,6 +196,7 @@ button.flickity-button.flickity-prev-next-button.next {
         cursor: url(../img/arrow-back.svg),auto;
     }
 }
+
 button.flickity-button.flickity-prev-next-button.previous {
     right: 0;
     cursor: url(../img/arrow-back.svg),auto;
@@ -200,13 +204,14 @@ button.flickity-button.flickity-prev-next-button.previous {
         cursor: url(../img/arrow-forward.svg),auto;
     }
 }
+
 button.previous:disabled {
     cursor: url(../img/arrow-forward.svg),auto;
 }
+
 button.next:disabled {
     cursor: url(../img/arrow-back.svg),auto;
 }
-
 .carousel {
     position: relative;
     // visibility: hidden;
@@ -223,9 +228,7 @@ button.next:disabled {
     // }
     // mix-blend-mode: multiply;
   }
-  
   .carousel-cell {
-    // margin-right: 10px;
     width: 100%;
     @include breakpoint(large up) { 
         height: 900px;
@@ -241,7 +244,6 @@ button.next:disabled {
         @include absolute-center;
         max-width: 60%;   
         max-height: 80%;
-        // width: 500px;
         height: auto;
     }
     video {
@@ -269,24 +271,27 @@ button.next:disabled {
     color: white;
     font-family: $body-font-family;
     text-transform: uppercase;
-    font-weight: 550;
+    font-weight: 500;
     font-size: 0.75rem;
     letter-spacing: 0.15rem;
     padding: 0.5rem 0 1rem 0;
   }
   /* position dots in carousel */
+
 .flickity-page-dots {
     bottom: 10px;
   }
   /* white circles */
-  .flickity-page-dots .dot {
+
+.flickity-page-dots .dot {
     width: 12px;
     height: 12px;
     opacity: 1;
     background: transparent;
     // border: 1px solid $brand-purple;
   }
-//   /* fill-in selected dot */
+/* fill-in selected dot */
+
   .flickity-page-dots .dot.is-selected {
     background: $black;
     transition: 0.3ms;
@@ -296,7 +301,7 @@ button.next:disabled {
     }
 
   }
-  
+
   .flickity-page-dots {
 	position: relative;
     left: 50px;
@@ -307,7 +312,7 @@ button.next:disabled {
     color: white;
     font-family: $body-font-family;
     text-transform: uppercase;
-    font-weight: 550;
+    font-weight: 500;
     font-size: 0.75rem;
     letter-spacing: 0.15rem;
     padding: 0.5rem 0 1rem 0;
@@ -321,30 +326,29 @@ button.next:disabled {
 		width: 30px;
 		height: 20px;
 	}
+
 	.dot {
 		counter-increment: carousel-cell;
 		position: absolute;
 		left: 0;
 		margin: 0;
-		opacity: 1;
-
-		&.is-selected {z-index: 1}
-
+        opacity: 1;      
 		&:before {
 			content: counter(carousel-cell);
 			// background-color: #fff;
 			text-align: right;
-		}
-
-		&:last-child:after {
-			content: counter(carousel-cell);
-			position: absolute;
-			top: 0;
-			right: -40px;
-			text-align: left;
-		}
+        }
+        &.is-selected {z-index: 1}
 	}
 }
+.dot:last-child:after {
+    content: counter(carousel-cell);
+    position: absolute;
+    top: 0;
+    right: -40px;
+    text-align: left;
+}
+/* uncss:ignore end */
 .footer {
     padding: 20px 0 0;
     background: $brand-blue;
@@ -460,7 +464,7 @@ button.next:disabled {
     // text-transform: uppercase;
     padding: 60px 0;
     font-size: 0.8rem;
-    font-weight: 700;
+    font-weight: 500;
 }
 ul {
     list-style: none;
@@ -526,6 +530,7 @@ ul.transition li {
     margin-left: 5px;
     display: inline-block;
 }
+/* uncss:ignore start */
 .am-profile {
     visibility: hidden;
 }
@@ -546,9 +551,15 @@ ul.transition li {
     font-size: 0.8rem;
 }
 div.m-modal-content {
+    font-family: $body-font-family;
     border-radius: 0 !important;
     background-color: $brand-purple !important;
 }
+.m-modal .m-modal-content .w-500 {
+    font-family: $body-font-family;
+    font-weight: 900;
+}
+/* uncss:ignore end */
 .carousel-container {
     position: relative;
 }

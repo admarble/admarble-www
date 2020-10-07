@@ -33,7 +33,7 @@ function loadConfig() {
 
 // Add the .htaccess file to the dist directory
 function htac() {
-  return gulp.src(['./src/.htaccess', './src/.nojekyll'],  { dot: true }, {base: './src/'})
+  return gulp.src(['./src/.htaccess', './src/.nojekyll', './src/CNAME'],  { dot: true }, {base: './src/'})
     .pipe(gulp.dest(PATHS.dist));
 }
 
@@ -96,7 +96,7 @@ function sass() {
     autoprefixer(),
 
     // UnCSS - Uncomment to remove unused styles in production
-    // PRODUCTION && uncss.postcssPlugin(UNCSS_OPTIONS),
+    PRODUCTION && uncss.postcssPlugin(UNCSS_OPTIONS),
   ].filter(Boolean);
 
   return gulp.src('src/assets/scss/app.scss')
@@ -182,7 +182,7 @@ function watch() {
 }
 
 gulp.task('deploy', function () {
-  return gulp.src("./dist/**/*")
+  return gulp.src("./dist/**/*", { dot: true })
     .pipe(deploy({ 
       remoteUrl: "https://github.com/admarble/admarble.github.io.git",
       branch: "master"

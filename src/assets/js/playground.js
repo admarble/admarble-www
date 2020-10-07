@@ -10,3 +10,4 @@ tl2.to(".loading-letter", {immediateRender: true, smoothOrigin:true, y: 20, skew
 gsap.config({
     nullTargetWarn: false,
   });
+
